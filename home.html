@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cat Hotel — Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        
+      </div>
+      <div>
+        <h1>Catzonia</h1>
+        <p>Comfort, care & play — for every whisker</p>
+      </div>
+    </div>
+    <div class="toolbar-controls">
+      <select id="outletSelect" class="outlet-select" aria-label="Choose outlet"></select>
+      <button class="icon-btn" id="profileBtn" title="Staff / Login"><i class="fa fa-user"></i></button>
+    </div>
+  </header>
+
+  
+  <section id="hero" class="hero" style="background-image: linear-gradient(135deg, rgba(12,18,30,0.45), rgba(5,10,15,0.45)), radial-gradient(circle at 20% 20%, rgba(124,58,237,0.12), transparent 10%), linear-gradient(180deg,#07101a,#07101a);">
+    <div class="overlay"></div>
+    <div class="hero-inner">
+      <div class="avatar" id="avatar">
+        <img src="cat1.webp" alt="outlet avatar"/>
+      </div>
+      <div class="hero-copy">
+        <h2 id="heroTitle">The Purr‑fect Stay for Your Cat</h2>
+        <p id="heroSubtitle">Safe, comfy suites — grooming, playtime and daily photo updates.</p>
+        <div class="cta-row">
+          <button class="btn" id="bookNow">Book Now</button>
+          <button class="btn" id="learnMore">Call Us</button>
+        </div>
+        <p class="muted" style="margin-top:10px">Selected outlet: <strong id="selectedOutletName">—</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section style="margin-bottom:12px">
+      <h3 style="margin:6px 0">What we offer</h3>
+      <div class="cards">
+        <div class="card" onclick="goToPage('cat-hotel.html')">
+          <div class="icon"><i class="fa-solid fa-hotel"></i></div>
+          <h3>Cat Hotel</h3>
+          <p class="muted">Private suites, warm bedding and 24/7 staff checks.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-shower"></i></div>
+          <h3>Essential</h3>
+          <p class="muted">Bath, brush and trim by experienced groomers.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-spa"></i></div>
+          <h3>Beauty</h3>
+          <p class="muted">Enrichment & daily supervised play sessions.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-heart"></i></div>
+          <h3>Wellness Spa</h3>
+          <p class="muted">Holistic wellness & relaxation therapies.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-gem"></i></div>
+          <h3>CatzoSpa+</h3>
+          <p class="muted">Premium package with daily spa and pampering.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-crown"></i></div>
+          <h3>Ultra Spa</h3>
+          <p class="muted">Luxury suites & exclusive treatments.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Bio Spa</h3>
+          <p class="muted">Organic products for sensitive cats.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3 style="margin:6px 0">Quick features</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <div class="card" style="flex:1 1 160px;min-width:160px">
+          <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <h4 style="margin:0 0 6px">Easy Booking</h4>
+          <p class="muted">Pick dates, choose a suite and add extras.</p>
+        </div>
+        <div class="card" style="flex:1 1 160px;min-width:160px">
+          <div class="icon"><i class="fa-solid fa-credit-card"></i></div>
+          <h4 style="margin:0 0 6px">Payment Options</h4>
+          <p class="muted">Online card, mobile pay, or pay at counter.</p>
+        </div>
+        <div class="card" style="flex:1 1 160px;min-width:160px">
+          <div class="icon"><i class="fa-solid fa-camera"></i></div>
+          <h4 style="margin:0 0 6px">Daily Photo Updates</h4>
+          <p class="muted">Receive photos of your cat while you're away.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="testimonials" aria-label="Customer Testimonials">
+      <div id="testimonialContent">
+        <div class="testimonial-text">"My cat loved her stay! The staff are so loving and attentive. Daily photos were a joy."</div>
+        <div class="testimonial-user">— Sarah L.</div>
+      </div>
+    </section>
+  </main>
+
+  
+  <div class="whatsapp-float">
+    <a href="https://wa.me/60123456789" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  
+  <button class="floating-book-btn" id="floatingBookNow"><i class="fa-solid fa-paw"></i>Book Now</button>
+
+  
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <h3 style="margin-top:0">Book Now</h3>
+      <div class="field">
+        <label class="muted">Name</label>
+        <input type="text" id="name" placeholder="Enter your cat's name" />
+      </div>
+      <div class="field">
+        <label class="muted">Outlet</label>
+        <select id="modalOutlet" style="width:100%"></select>
+      </div>
+      <div class="field">
+        <label class="muted">Service</label>
+        <select id="modalService" style="width:100%"></select>
+      </div>
+      <div class="field">
+        <label class="muted">Type</label>
+        <select id="modalType" style="width:100%"></select>
+      </div>
+      <div class="row">
+        <div class="field" style="flex:1">
+          <label class="muted">Check-in</label>
+          <input type="date" id="checkin" />
+        </div>
+        <div class="field" style="flex:1">
+          <label class="muted">Check-out</label>
+          <input type="date" id="checkout" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="muted">Notes</label>
+        <input type="text" id="notes" placeholder="Dietary needs, meds, temperament" />
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button class="btn ghost" id="cancelBtn">Cancel</button>
+        <button class="btn" id="confirmBtn">Confirm booking</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="font-weight:600">Catzonia</div>
+        <div class="muted">Multiple outlets — switch from the toolbar</div>
+      </div>
+      <div class="muted">© Catzonia · Built with care</div>
+    </div>
+  </footer>
+
+  <script>
+    
+    const outlets = [
+      { id: 'Bangi', name: 'Bangi', hero: '', avatar: '', address: '12 Main St' },
+      { id: 'Cheng, Melaka', name: 'Cheng, Melaka', hero: '', avatar: '', address: '88 Central Ave' },
+      { id: 'Damansara Perdana', name: 'Damansara Perdana', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Ipoh', name: 'Ipoh', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Johor', name: 'Johor', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Seremban 2', name: 'Seremban 2', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Seri Kembangan', name: 'Seri Kembangan', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Shah Alam', name: 'Shah Alam', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'USJ21', name: 'USJ21', hero: '', avatar: '', address: '3 Uptown Blvd' },
+      { id: 'Wangsa Maju', name: 'Wangsa Maju', hero: '', avatar: '', address: '3 Uptown Blvd' }
+    ];
+    const outletSelect = document.getElementById('outletSelect');
+    const modalOutlet = document.getElementById('modalOutlet');
+    const selectedOutletName = document.getElementById('selectedOutletName');
+    outlets.forEach(o=>{
+      const opt = document.createElement('option'); opt.value = o.id; opt.textContent = o.name; outletSelect.appendChild(opt);
+      const opt2 = document.createElement('option'); opt2.value = o.id; opt2.textContent = o.name; modalOutlet.appendChild(opt2);
+    });
+    const saved = localStorage.getItem('cathotel_selected_outlet') || outlets[0].id;
+    outletSelect.value = saved; modalOutlet.value = saved;
+
+    function goToPage(page){
+      window.location.href = page;
+    }
+
+    
+    const services = [
+      { id: 'Hotel', name: 'Cat Hotel' },
+      { id: 'Essential', name: 'Essential' },
+      { id: 'Beauty', name: 'Beauty' },
+      { id: 'Wellness Spa', name: 'Wellness Spa' },
+      { id: 'CatzoSpa+', name: 'CatzoSpa+' },
+      { id: 'Ultra Spa', name: 'Ultra Spa' },
+      { id: 'Bio Spa', name: 'Bio Spa' }
+    ];
+    const modalService = document.getElementById('modalService');
+    services.forEach(s=>{
+      const opt = document.createElement('option'); opt.value = s.id; opt.textContent = s.name; modalService.appendChild(opt);
+    });
+    const modalType = document.getElementById('modalType');
+
+    
+    function applyOutlet(id){
+      const o = outlets.find(x=>x.id===id) || outlets[0];
+      selectedOutletName.textContent = o.name;
+      
+      const heroEl = document.getElementById('hero');
+      if(o.hero){
+        heroEl.style.backgroundImage = `linear-gradient(135deg, rgba(12,18,30,0.45), rgba(5,10,15,0.45)), url(${o.hero})`;
+      } else {
+        heroEl.style.backgroundImage = `linear-gradient(135deg, rgba(12,18,30,0.45), rgba(5,10,15,0.45)), radial-gradient(circle at 20% 20%, rgba(124,58,237,0.08), transparent 10%), linear-gradient(180deg,#07101a,#07101a)`;
+      }
+      const av = document.querySelector('#avatar img');
+      if(o.avatar){ av.src = o.avatar } else { av.src = av.src }
+      localStorage.setItem('cathotel_selected_outlet', o.id);
+    }
+    outletSelect.addEventListener('change', e=>{ applyOutlet(e.target.value); modalOutlet.value=e.target.value });
+    modalOutlet.addEventListener('change', e=>{ outletSelect.value = e.target.value; applyOutlet(e.target.value) });
+    applyOutlet(outletSelect.value);
+
+    
+    const modal = document.getElementById('modal');
+    const bookNow = document.getElementById('bookNow');
+    const floatingBookNow = document.getElementById('floatingBookNow');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    function openBookingModal() {
+      modal.classList.add('open');
+      modalOutlet.value = outletSelect.value;
+      document.getElementById('checkin').focus();
+    }
+    bookNow.addEventListener('click', openBookingModal);
+    floatingBookNow.addEventListener('click', openBookingModal);
+    cancelBtn.addEventListener('click', ()=>{ modal.classList.remove('open'); });
+    confirmBtn.addEventListener('click', ()=>{
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      if(!checkin || !checkout){ alert('Please select check-in and check-out dates.'); return; }
+      if(new Date(checkout) <= new Date(checkin)){ alert('Check-out must be after check-in.'); return; }
+      const payload = {
+        outlet: modalOutlet.value,
+        checkin, checkout,
+        notes: document.getElementById('notes').value
+      };
+      
+      showToast("Booking submitted! We'll contact you soon. 😺");
+      modal.classList.remove('open');
+    });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.classList.remove('open'); });
+
+    
+    function showToast(msg) {
+      let toast = document.createElement('div');
+      toast.textContent = msg;
+      toast.style.position = "fixed";
+      toast.style.bottom = "28px";
+      toast.style.left = "50%";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.background = "#fffbe8";
+      toast.style.color = "#3b3000";
+      toast.style.padding = "1em 2em";
+      toast.style.borderRadius = "12px";
+      toast.style.fontWeight = "bold";
+      toast.style.fontSize = "1.08em";
+      toast.style.boxShadow = "0 2px 14px rgba(124,58,237,0.13)";
+      toast.style.zIndex = 1000;
+      document.body.appendChild(toast);
+      setTimeout(()=>{ toast.remove(); }, 3500);
+    }
+
+    
+    const testimonials = [
+      {text: '"My cat loved her stay! The staff are so loving and attentive. Daily photos were a joy."', user: "— Sarah L."},
+      {text: '"Best cat hotel experience ever! Clean, fun, and stress-free."', user: "— Mr. Azmi"},
+      {text: '"I could travel with peace of mind. Thank you Catzonia!"', user: "— Nurul H."}
+    ];
+    let testimonialIdx = 0;
+    setInterval(()=>{
+      testimonialIdx = (testimonialIdx+1)%testimonials.length;
+      document.getElementById('testimonialContent').innerHTML = `
+        <div class="testimonial-text">${testimonials[testimonialIdx].text}</div>
+        <div class="testimonial-user">${testimonials[testimonialIdx].user}</div>`;
+    }, 4700);
+  </script>
+</body>
+</html>

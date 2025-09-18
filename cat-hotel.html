@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catzonia - Cat Hotel</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin: 2rem 0;
+    }
+    .service-card {
+      background: var(--card, #fff9c4);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      padding: 1rem;
+      text-align: center;
+      transition: box-shadow .18s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .service-card img {
+      width: 100%;
+      max-width: 210px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.7rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .service-card h4 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1.15rem;
+    }
+    .service-card .price {
+      color: var(--accent, #ffd600);
+      font-weight: bold;
+      font-size: 1.05rem;
+      margin-bottom: .5rem;
+    }
+    .service-card .service-book-btn {
+      margin-top: 0.7rem;
+      background: var(--accent, #ffd600);
+      color: #3b3000;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 4px 14px rgba(255,214,0,0.08);
+      transition: background .2s;
+    }
+    .service-card .service-book-btn:hover {
+      background: #fff176;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <h1>Catzonia</h1>
+    <select id="outletSelect"></select>
+  </div>
+
+  <div class="hero">
+    <img src="vic.png" alt="Cat Hotel" width="300" height="250"/>
+    <h2>Cat Hotel</h2>
+  </div>
+
+  
+  <section>
+    <h3 style="text-align:center;margin-top:2rem;">Our Services</h3>
+    <div class="services-grid" id="servicesGrid"></div>
+  </section>
+  
+  <div class="modal" id="bookingModal">
+    <div class="sheet">
+      <h3 id="modalTitle">Booking</h3>
+      <form id="bookingForm">
+        <label>Outlet</label>
+        <input type="text" id="modalOutlet" readonly/>
+        <label>Service</label>
+        <input type="text" id="modalService" readonly/>
+        <label>Date</label>
+        <input type="date" required/>
+        <label>Cat's Name</label>
+        <input type="text" placeholder="Enter your cat's name" required/>
+        <button type="submit">Confirm Booking</button>
+        <button type="button" class="close-btn" onclick="closeBooking()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    
+    const outlets = ["Bangi","Cheng, Melaka","Damansara Perdana","Ipoh","Johor","Seremban 2","Seri Kembangan","Shah Alam","USJ21","Wangsa Maju"];
+    const outletSelect = document.getElementById('outletSelect');
+    outlets.forEach(o=>{
+      const opt=document.createElement('option');
+      opt.value=o; opt.textContent=o;
+      outletSelect.appendChild(opt);
+    });
+    outletSelect.value=outlets[0];
+
+    
+    const services = [
+      {
+        name: "ECONOMY",
+        price: "RM35 ",
+        img: "assets/standard-suite.jpg"
+      },
+      {
+        name: "COMFY",
+        price: "RM50 ",
+        img: "comfy.png"
+      },
+      {
+        name: "SUPER VVIC",
+        price: "RM150 ",
+        img: "assets/spa.jpg"
+      },
+      {
+        name: "VIC",
+        price: "RM70",
+        img: "vic.png"
+      },
+      {
+        name: "VVIC",
+        price: "RM100",
+        img: "vvic.png"
+      }
+      
+    ];
+
+    
+    const servicesGrid = document.getElementById('servicesGrid');
+    services.forEach(service=>{
+      const card = document.createElement('div');
+      card.className = 'service-card';
+      card.innerHTML = `
+        <img src="${service.img}" alt="${service.name}">
+        <h4>${service.name}</h4>
+        <div class="price">${service.price}</div>
+        <button class="service-book-btn" data-service="${service.name}">Book Now</button>
+      `;
+      servicesGrid.appendChild(card);
+    });
+
+    
+    servicesGrid.addEventListener('click', function(e) {
+      if (e.target.classList.contains('service-book-btn')) {
+        const serviceName = e.target.getAttribute('data-service');
+        openBooking(serviceName);
+      }
+    });
+
+    
+    const modal=document.getElementById('bookingModal');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalOutlet=document.getElementById('modalOutlet');
+    const modalService=document.getElementById('modalService');
+
+    function openBooking(service){
+      modal.classList.add('active');
+      modalTitle.textContent=`Book ${service}`;
+      modalOutlet.value=outletSelect.value;
+      modalService.value=service;
+    }
+    function closeBooking(){modal.classList.remove('active');}
+
+    function goBack(){
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+</html>
